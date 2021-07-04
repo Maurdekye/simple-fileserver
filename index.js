@@ -73,20 +73,23 @@ async function render_directory(url_path, dir_path, dir) {
                         } catch(e) {
                             return "";
                         }
-                        var name, href, size, sizedenom;
+                        var name, href, download, size, sizedenom;
                         if (stat.isDirectory()) {
                             name = `${file}/`;
                             href = `href="${ufpath}/"`;
+                            download = "";
                             size = "";
                             sizedenom = "";
                         } else {
                             name = file;
                             href = `href="${ufpath}" download`;
+                            download = `<a ${href}>download</a>`;
                             [size, sizedenom] = normalize_size(stat.size);
                         }
                         return `
                         <tr>
                             <td><a ${href}>${name}</a></td>
+                            <td>${download}</td>
                             <td class="sizedisplay-left">${size}</td>
                             <td class="sizedisplay-right">${sizedenom}</td>
                         </tr>
