@@ -82,8 +82,8 @@ async function render_directory(url_path, dir_path, dir) {
                             sizedenom = "";
                         } else {
                             name = file;
-                            href = `href="${ufpath}" download`;
-                            download = `<a ${href}>download</a>`;
+                            href = `href="${ufpath}"`;
+                            download = `<a href="${ufpath}" download>download</a>`;
                             [size, sizedenom] = normalize_size(stat.size);
                         }
                         return `
